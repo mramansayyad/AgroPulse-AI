@@ -2,12 +2,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 class GeminiApiService {
   constructor() {
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-    this.genAI = new GoogleGenerativeAI(apiKey || "");
-    this.model = this.genAI.getGenerativeModel(
-      { model: "gemini-1.5-flash" },
-      { apiVersion: "v1beta" }
-    );
+    this.genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY, { apiVersion: 'v1' });
+    this.model = this.genAI.getGenerativeModel({ model: 'gemini-pro' });
   }
 
   /**
@@ -47,7 +43,6 @@ class GeminiApiService {
     `;
 
     try {
-      // Execute with a 15-second timeout (Audit Requirement)
       const result = await this._withTimeout(this.model.generateContent(prompt), 15000);
       return result.response.text() || "Error: No response generated.";
     } catch (e) {
@@ -79,7 +74,6 @@ class GeminiApiService {
    * Multimodal SDG 2.3: Analyzes a photo of a crop to diagnose health/disease.
    */
   async diagnoseCropHealth(base64Image, mimeType = "image/jpeg") {
-    // Strip the data:image/jpeg;base64, prefix if it exists
     const cleanBase64 = base64Image.split(',')[1] || base64Image;
     
     const prompt = "You are an expert agronomist for Indian smallholder farmers. Analyze this crop image. Identify any visible diseases, pests, or nutrient deficiencies, and provide 3 immediate, low-cost remedial actions to save the crop.";
@@ -92,7 +86,6 @@ class GeminiApiService {
     };
 
     try {
-      // 15-second timeout for image analysis in rural networks
       const result = await this._withTimeout(this.model.generateContent([prompt, imagePart]), 20000);
       return result.response.text() || "Could not analyze the image.";
     } catch (e) {

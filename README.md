@@ -11,7 +11,7 @@ This platform is directly engineered to tackle the United Nations Sustainable De
 
 ## Core Architecture
 *   **Frontend:** React, Vite, and TailwindCSS v4 with a highly accessible 'Agri-Noir' Glassmorphism aesthetic.
-*   **AI Engine:** Google Gemini 1.5 Flash (via `@google/generative-ai`), incorporating multimodal (text/vision) processing with a strict connectivity fallback designed for rural 2G/3G networks.
+*   **AI Engine:** Google Gemini-Pro (via `@google/generative-ai`), utilizing the Stable v1 Production API for maximum regional reliability and rigorous fallback handling on rural 2G/3G networks.
 *   **Accessibility:** Native multilingual support (English, Hindi, Marathi) and comprehensive ARIA screen-reader mappings.
 
 ## How to Run Locally
