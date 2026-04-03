@@ -2,8 +2,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 class GeminiApiService {
   constructor() {
-    this.genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY, { apiVersion: 'v1' });
-    this.model = this.genAI.getGenerativeModel({ model: 'gemini-pro' });
+    this.genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+    this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
   }
 
   /**
