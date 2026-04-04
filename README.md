@@ -16,9 +16,9 @@ This platform is directly engineered to tackle the United Nations Sustainable De
 
 ## How to Run Locally
 
-1. **Clone the repository** and navigate to the project directory:
+1. **Clone the repository**:
    ```bash
-   cd app_build
+   git clone https://github.com/mramansayyad/AgroPulse-AI.git
    ```
 
 2. **Install Dependencies**:
