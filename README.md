@@ -4,6 +4,8 @@ Built by **Team CYBER NOVA** for the Google Solution Challenge 2026.
 
 AgroPulse AI is an agentic Chief Operating Officer designed to empower Indian smallholder farmers through accessible, voice-first, and highly intelligent agricultural insights. 
 
+![main](./assets/main.png)
+
 ## Mission Alignment
 This platform is directly engineered to tackle the United Nations Sustainable Development Goals:
 *   **SDG 1 (No Poverty):** Empowering farmers with localized, data-driven Predictive Crop Profitability forecasting to maximize their economic resilience and ROI.
