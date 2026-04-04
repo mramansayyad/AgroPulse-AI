@@ -7,9 +7,11 @@ AgroPulse AI is an agentic Chief Operating Officer designed to empower Indian sm
 ![main](./assets/main.png)
 
 ## Mission Alignment
-This platform is directly engineered to tackle the United Nations Sustainable Development Goals:
-*   **SDG 1 (No Poverty):** Empowering farmers with localized, data-driven Predictive Crop Profitability forecasting to maximize their economic resilience and ROI.
-*   **SDG 2 (Zero Hunger):** Implementing cutting-edge visual diagnostics through a MediaDevices 'Snap & Analyze' flow. This allows rapid identification and remediation of crop diseases, saving harvests and stabilizing the food supply chain.
+AgroPulse AI is a purpose-driven architecture designed to accelerate the United Nations Sustainable Development Goals across the Indian agricultural landscape:
+
+* **SDG 1 (No Poverty):** Empowering Indian smallholder farmers with localized, data-driven Predictive Crop Profitability forecasting to maximize economic resilience and ROI in regional agro-climatic zones.
+* **SDG 2 (Zero Hunger):** Implementing cutting-edge visual diagnostics through a MediaDevices 'Snap & Analyze' flow. This allows rapid identification of crop diseases common in Indian soil, saving harvests and stabilizing the local food supply chain.
+* **SDG 9 (Industry, Innovation, and Infrastructure):** Operationalizing advanced GenAI infrastructure to bridge the digital divide in rural Bharat.
 
 ## Core Architecture
 *   **Frontend:** React, Vite, and TailwindCSS v4 with a highly accessible 'Agri-Noir' Glassmorphism aesthetic.
