@@ -2,9 +2,11 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 class GeminiApiService {
   constructor() {
-    this.genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-    this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // Add the apiVersion: 'v1' configuration to ensure stable endpoint usage
+    this.genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY, { apiVersion: 'v1' });
+    this.model = this.genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
   }
+
 
   /**
    * Helper method to add a timeout to any promise, addressing rural connectivity needs.
@@ -58,7 +60,7 @@ class GeminiApiService {
    */
   async askCoPilot(transcribedQuestion) {
     const prompt = `As an agricultural expert for Indian smallholders, answer: ${transcribedQuestion}`;
-    
+
     try {
       const result = await this._withTimeout(this.model.generateContent(prompt), 15000);
       return result.response.text() || "I could not process that request.";
@@ -75,9 +77,9 @@ class GeminiApiService {
    */
   async diagnoseCropHealth(base64Image, mimeType = "image/jpeg") {
     const cleanBase64 = base64Image.split(',')[1] || base64Image;
-    
+
     const prompt = "You are an expert agronomist for Indian smallholder farmers. Analyze this crop image. Identify any visible diseases, pests, or nutrient deficiencies, and provide 3 immediate, low-cost remedial actions to save the crop.";
-    
+
     const imagePart = {
       inlineData: {
         data: cleanBase64,
