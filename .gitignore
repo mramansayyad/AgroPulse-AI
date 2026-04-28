@@ -28,3 +28,24 @@ dist-ssr
 .env.local
 .env.production
 .env.development
+.env.*.local
+
+# Testing
+coverage/
+
+# Production
+dist/
+dist-ssr/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Misc
+.vercel
+.turbo
+.next
+*.tsbuildinfo

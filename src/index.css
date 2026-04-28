@@ -1,8 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-agri-dark: #0D1B11;
-  --color-agri-neon: #39FF14;
+  --color-agri-dark: #0d1b11;
+  --color-agri-neon: #39ff14;
   --color-agri-neon-hover: #2ee610;
   --color-agri-glass: rgba(255, 255, 255, 0.05);
   --color-agri-glass-border: rgba(255, 255, 255, 0.1);
@@ -19,7 +19,7 @@ body {
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid var(--color-agri-glass-border);
@@ -30,10 +30,110 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.1); 
+  background: rgba(0, 0, 0, 0.1);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--color-agri-neon); 
+  background: var(--color-agri-neon);
   border-radius: 4px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-neon {
+  0% {
+    box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(57, 255, 20, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(57, 255, 20, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse-neon 1.5s infinite;
+  background-color: rgba(57, 255, 20, 0.1) !important;
+  border-color: #39ff14 !important;
+}
+
+/* Custom Markdown Styles */
+.custom-markdown h3 {
+  color: var(--color-agri-neon);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.custom-markdown ul {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+}
+
+.custom-markdown li {
+  position: relative;
+  padding-left: 1.5rem !important;
+  margin-bottom: 0.5rem;
+}
+
+.custom-markdown li::before {
+  content: '→';
+  color: var(--color-agri-neon);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.custom-markdown p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+}
+
+/* Responsive Typography for Report Readability */
+@media (min-width: 768px) {
+  .glass-card {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .custom-markdown h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Accessibility: Focus Styles */
+:focus-visible {
+  outline: 3px solid var(--color-agri-neon);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Ensure interactive elements have sufficient tap target size for mobile accessibility */
+button,
+select {
+  min-height: 48px;
+  min-width: 48px;
 }

@@ -1,0 +1,60 @@
+steps:
+  # Build the container image using the Dockerfile
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/agropulse-ai',
+        '--build-arg',
+        'VITE_GEMINI_API_KEY=${_VITE_GEMINI_API_KEY}',
+        '--build-arg',
+        'VITE_FIREBASE_API_KEY=${_VITE_FIREBASE_API_KEY}',
+        '--build-arg',
+        'VITE_FIREBASE_AUTH_DOMAIN=${_VITE_FIREBASE_AUTH_DOMAIN}',
+        '--build-arg',
+        'VITE_FIREBASE_PROJECT_ID=${_VITE_FIREBASE_PROJECT_ID}',
+        '--build-arg',
+        'VITE_FIREBASE_STORAGE_BUCKET=${_VITE_FIREBASE_STORAGE_BUCKET}',
+        '--build-arg',
+        'VITE_FIREBASE_MESSAGING_SENDER_ID=${_VITE_FIREBASE_MESSAGING_SENDER_ID}',
+        '--build-arg',
+        'VITE_FIREBASE_APP_ID=${_VITE_FIREBASE_APP_ID}',
+        '--build-arg',
+        'VITE_FIREBASE_MEASUREMENT_ID=${_VITE_FIREBASE_MEASUREMENT_ID}',
+        '.',
+      ]
+
+  # Push the image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/agropulse-ai']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run',
+        'deploy',
+        'agropulse-ai',
+        '--image',
+        'gcr.io/$PROJECT_ID/agropulse-ai',
+        '--region',
+        'us-central1',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated',
+      ]
+
+images:
+  - 'gcr.io/$PROJECT_ID/agropulse-ai'
+
+substitutions:
+  _VITE_GEMINI_API_KEY: 'AIzaSyAZYva8txIiO-YYLB1lJeEv1cctYAJUpwk'
+  _VITE_FIREBASE_API_KEY: 'AIzaSyBfFhY6EhBPvcupJ2vwQPvZOvIVUsS6z1o'
+  _VITE_FIREBASE_AUTH_DOMAIN: 'agropulse-ai.firebaseapp.com'
+  _VITE_FIREBASE_PROJECT_ID: 'agropulse-ai'
+  _VITE_FIREBASE_STORAGE_BUCKET: 'agropulse-ai.firebasestorage.app'
+  _VITE_FIREBASE_MESSAGING_SENDER_ID: '780076796996'
+  _VITE_FIREBASE_APP_ID: '1:780076796996:web:0c71261ee282e3ff3cc011'
+  _VITE_FIREBASE_MEASUREMENT_ID: 'G-WES08EV9P0'
