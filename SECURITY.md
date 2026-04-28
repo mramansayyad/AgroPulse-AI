@@ -13,7 +13,7 @@ Only the latest version of AgroPulse AI is supported for security updates.
 
 We take the security of our users and their data seriously. If you believe you have found a security vulnerability, please do NOT open a public issue. Instead, please report it to us by following these steps:
 
-1. Send an email to [security@cybernova.agropulse.ai] (replace with real email).
+1. Send an email to [mr.sayyadaman@gmail.com] (replace with real email).
 2. Include as much detail as possible, including steps to reproduce.
 3. We will acknowledge your report within 48 hours.
 
